@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">QueenLiveStock</string>
+    <string name="app_name">Queen LiveStock</string>
+    <string name="app_heading">QUEEN LIVESTOCK</string>
+    <string name="our_motto">Welcome to Queen LiveStock - Connecting livestock buyers and sellers like never before</string>
 </resources>
