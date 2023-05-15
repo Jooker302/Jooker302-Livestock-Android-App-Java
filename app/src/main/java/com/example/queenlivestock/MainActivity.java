@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent i = new Intent(getApplicationContext() ,Login.class);
                     startActivity(i);
+                    overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                 }
             });
 
@@ -28,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
-//        finishAffinity();
         if (back_pressed + TIME_DELAY > System.currentTimeMillis()) {
             finishAffinity();
         } else {
