@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Sign In"
+            android:text="@string/signin"
             android:textColor="@color/light_blue"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -98,12 +98,36 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="60dp"
             android:backgroundTint="@color/light_blue"
-
-            android:text="Sign In"
+            android:textColor="@color/white"
+            android:text="@string/signin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/register_check"
+            android:textColor="@color/light_blue"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signinbutton" />
+
+        <TextView
+            android:id="@+id/registernowlink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/registernow"
+            android:textSize="14sp"
+            android:textColor="@color/lightbit_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
