@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/loginnow"
+            android:text="@string/login_now"
             android:textColor="@color/lightbit_blue"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"

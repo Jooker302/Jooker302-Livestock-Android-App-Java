@@ -18,7 +18,7 @@ public class Register extends AppCompatActivity {
 
         TextView loginlink = findViewById(R.id.loginlink);
 
-        String text = getString(R.string.registernow);
+        String text = getString(R.string.login_now);
         SpannableString spannableString = new SpannableString(text);
         spannableString.setSpan(new UnderlineSpan(), 0, text.length(), 0);
 
