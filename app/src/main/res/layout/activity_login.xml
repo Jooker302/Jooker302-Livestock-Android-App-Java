@@ -45,6 +45,7 @@
             android:layout_marginTop="50dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/signin"
+            android:textAllCaps="true"
             android:textColor="@color/light_blue"
             android:textSize="25sp"
             android:textStyle="bold"

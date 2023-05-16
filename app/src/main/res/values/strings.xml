@@ -4,5 +4,8 @@
     <string name="our_motto">~ Welcome to Queen LiveStock - Connecting livestock buyers and sellers like never before ~</string>
     <string name="register_check">Don\'t have an account?</string>
     <string name="signin">Sign In</string>
+    <string name="loginnow">Log Im Now</string>
     <string name="registernow">Register Now</string>
+    <string name="register">Register</string>
+    <string name="login_check">Already have an account?</string>
 </resources>
