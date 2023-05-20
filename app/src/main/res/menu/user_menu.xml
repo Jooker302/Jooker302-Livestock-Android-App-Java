@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/userhome"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/usersearch"
+        android:title="Search" />
+
+<!--    <item-->
+<!--        android:id="@+id/navigation_notifications"-->
+<!--        android:icon="@drawable/ic_notifications"-->
+<!--        android:title="Notifications" />-->
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/usereditaccount"
+        android:title="Profile" />
+</menu>
