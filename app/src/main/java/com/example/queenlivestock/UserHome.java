@@ -14,6 +14,8 @@ public class UserHome extends AppCompatActivity implements BottomNavigationView.
 
     BottomNavigationView bottomnavigation;
     UserHomeFragment userhomeFragment;
+    UserProfileFragment userprofileFragment;
+    UserSearchFragment usersearchFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +32,72 @@ public class UserHome extends AppCompatActivity implements BottomNavigationView.
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.navigation_home) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-//            Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_LONG).show();
-
-            userhomeFragment = new UserHomeFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.fragment_container, userhomeFragment, "MyFragment");
-            transaction.commit();
-            return true;
-        } else if (item.getItemId() == R.id.navigation_search) {
-            // Handle search action
-            Toast.makeText(getApplicationContext(),"Search",Toast.LENGTH_LONG).show();
-            return true;
-        } else if (item.getItemId() == R.id.navigation_profile) {
-            // Handle profile action
-            Toast.makeText(getApplicationContext(),"Profile",Toast.LENGTH_LONG).show();
-            return true;
+//        if (item.getItemId() == R.id.navigation_home) {
+//
+////            Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_LONG).show();
+//
+//            userhomeFragment = new UserHomeFragment();
+//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            transaction.add(R.id.fragment_container, userhomeFragment, "MyFragment");
+//            transaction.commit();
+//            return true;
+//        } else if (item.getItemId() == R.id.navigation_search) {
+//            usersearchFragment = new UserSearchFragment();
+//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            transaction.add(R.id.fragment_container, usersearchFragment, "MyFragment");
+//            transaction.commit();
+////            Toast.makeText(getApplicationContext(),"Search",Toast.LENGTH_LONG).show();
+//            return true;
+//        } else if (item.getItemId() == R.id.navigation_profile) {
+//            userprofileFragment = new UserProfileFragment();
+//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            transaction.add(R.id.fragment_container, userprofileFragment, "MyFragment");
+//            transaction.commit();
+////            Toast.makeText(getApplicationContext(),"Profile",Toast.LENGTH_LONG).show();
+//            return true;
+//        }
+//        return false;
+        if (userhomeFragment != null) {
+            transaction.hide(userhomeFragment);
         }
-        return false;
+        if (usersearchFragment != null) {
+            transaction.hide(usersearchFragment);
+        }
+        if (userprofileFragment != null) {
+            transaction.hide(userprofileFragment);
+        }
+
+        if (item.getItemId() == R.id.navigation_home) {
+            if (userhomeFragment == null) {
+                userhomeFragment = new UserHomeFragment();
+                transaction.add(R.id.fragment_container, userhomeFragment, "MyFragment");
+            } else {
+                transaction.show(userhomeFragment);
+            }
+
+            // Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_LONG).show();
+        } else if (item.getItemId() == R.id.navigation_search) {
+            if (usersearchFragment == null) {
+                usersearchFragment = new UserSearchFragment();
+                transaction.add(R.id.fragment_container, usersearchFragment, "MyFragment");
+            } else {
+                transaction.show(usersearchFragment);
+            }
+
+            // Toast.makeText(getApplicationContext(), "Search", Toast.LENGTH_LONG).show();
+        } else if (item.getItemId() == R.id.navigation_profile) {
+            if (userprofileFragment == null) {
+                userprofileFragment = new UserProfileFragment();
+                transaction.add(R.id.fragment_container, userprofileFragment, "MyFragment");
+            } else {
+                transaction.show(userprofileFragment);
+            }
+
+        }
+
+        transaction.commit();
+        return true;
     }
 }
