@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,11 +15,13 @@ public class Login extends AppCompatActivity {
 
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
+    Button signbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        signbutton = findViewById(R.id.signinbutton);
         TextView registernowlink = findViewById(R.id.registernowlink);
 
         String text = getString(R.string.registernow);
@@ -35,6 +38,15 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        signbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent home = new Intent(getApplicationContext(),UserHome.class);
+                startActivity(home);
+            }
+        });
+
 
 
     }
