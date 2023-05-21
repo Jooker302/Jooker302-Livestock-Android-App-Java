@@ -40,7 +40,7 @@
             android:id="@+id/registertext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/register"
             android:textAllCaps="true"
@@ -56,16 +56,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/light_blue"
             android:ems="10"
+            android:gravity="center"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:textColor="@color/light_blue"
             android:textColorHighlight="@color/light_blue"
             android:textColorHint="@color/double_light_blue"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/registertext" />
@@ -75,16 +75,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/light_blue"
             android:ems="10"
+            android:gravity="center"
             android:hint="Name"
             android:inputType="text"
             android:textColor="@color/light_blue"
             android:textColorHighlight="@color/light_blue"
             android:textColorHint="@color/double_light_blue"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
@@ -94,34 +94,61 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="30dp"
-            android:hint="Password"
-            android:gravity="center"
             android:backgroundTint="@color/light_blue"
             android:ems="10"
+            android:gravity="center"
+            android:hint="Password"
             android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/light_blue"
             android:textColorHighlight="@color/light_blue"
             android:textColorHint="@color/double_light_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+        <RadioGroup
+            android:id="@+id/userrole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+            >
+
+            <RadioButton
+                android:id="@+id/role_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/role_seller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seller" />
+
+        </RadioGroup>
+
 
         <Button
             android:id="@+id/registerbutton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="60dp"
             android:backgroundTint="@color/light_blue"
-            android:textColor="@color/white"
             android:text="@string/register"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/userrole" />
 
         <TextView
             android:id="@+id/textView4"
