@@ -75,7 +75,7 @@
 
 
         <EditText
-            android:id="@+id/editTextEmailAddress"
+            android:id="@+id/register_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -94,7 +94,7 @@
             app:layout_constraintTop_toBottomOf="@+id/register_user_image" />
 
         <EditText
-            android:id="@+id/editTextName"
+            android:id="@+id/register_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -110,7 +110,7 @@
             android:textColorHint="@color/double_light_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/register_email" />
 
         <EditText
             android:id="@+id/register_address"
@@ -129,10 +129,10 @@
             android:textColorHint="@color/double_light_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+            app:layout_constraintTop_toBottomOf="@+id/register_name" />
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -151,14 +151,14 @@
             app:layout_constraintTop_toBottomOf="@+id/register_address" />
 
         <RadioGroup
-            android:id="@+id/userrole"
+            android:id="@+id/register_user_role"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+            app:layout_constraintTop_toBottomOf="@+id/register_password"
             >
 
             <RadioButton
@@ -180,7 +180,7 @@
 
 
         <Button
-            android:id="@+id/registerbutton"
+            android:id="@+id/register_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -192,7 +192,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userrole" />
+            app:layout_constraintTop_toBottomOf="@+id/register_user_role" />
 
         <TextView
             android:id="@+id/textView4"
@@ -204,7 +204,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/registerbutton" />
+            app:layout_constraintTop_toBottomOf="@+id/register_button" />
 
         <TextView
             android:id="@+id/loginlink"
