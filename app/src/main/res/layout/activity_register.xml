@@ -8,13 +8,17 @@
     tools:context=".Register">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="45dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="60dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +29,7 @@
             android:id="@+id/registerheading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/main_font"
             android:gravity="center"
             android:text="@string/app_heading"
@@ -51,6 +55,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/registerheading" />
 
+
+        <ImageView
+            android:id="@+id/register_user_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="120dp"
+            android:background="@drawable/round_background"
+            android:scaleType="fitCenter"
+            android:src="@drawable/placeholder_image"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registertext" />
+
+
+
         <EditText
             android:id="@+id/editTextEmailAddress"
             android:layout_width="match_parent"
@@ -68,7 +91,7 @@
             android:textColorHint="@color/double_light_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/registertext" />
+            app:layout_constraintTop_toBottomOf="@+id/register_user_image" />
 
         <EditText
             android:id="@+id/editTextName"
@@ -90,6 +113,25 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
 
         <EditText
+            android:id="@+id/register_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Address"
+            android:inputType="text"
+            android:textColor="@color/light_blue"
+            android:textColorHighlight="@color/light_blue"
+            android:textColorHint="@color/double_light_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+        <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,7 +148,7 @@
             android:textColorHint="@color/double_light_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+            app:layout_constraintTop_toBottomOf="@+id/register_address" />
 
         <RadioGroup
             android:id="@+id/userrole"
@@ -123,14 +165,16 @@
                 android:id="@+id/role_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/user"
-                android:checked="true" />
+                android:textColor="@color/black" />
 
             <RadioButton
                 android:id="@+id/role_seller"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/seller" />
+                android:text="@string/seller"
+                android:textColor="@color/black" />
 
         </RadioGroup>
 
@@ -178,6 +222,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
