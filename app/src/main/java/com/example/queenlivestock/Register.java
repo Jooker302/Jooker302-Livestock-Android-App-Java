@@ -23,6 +23,7 @@ import android.widget.Toast;
 public class Register extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST_CODE = 1;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
+    String imageUriString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +62,7 @@ public class Register extends AppCompatActivity {
 
                         // Handle the selected image data here
                         Uri selectedImageUri = data.getData();
-                        String imageUriString = selectedImageUri.toString();
+                        imageUriString = selectedImageUri.toString();
 //                        Toast.makeText(getApplicationContext(),imageUriString,Toast.LENGTH_LONG).show();
                         ImageView imageView = findViewById(R.id.register_user_image);
                         imageView.setImageURI(selectedImageUri);
@@ -104,8 +105,12 @@ public class Register extends AppCompatActivity {
 
                 } else {
                     RadioButton radioButton = findViewById(selectedId);
-                    String selectedValue = radioButton.getText().toString().toLowerCase();
+                    String selected_role = radioButton.getText().toString().toLowerCase();
 //                    Toast.makeText(getApplicationContext(),"Empty",Toast.LENGTH_SHORT).show();
+                    UserClass new_user = new UserClass("",register_name.getText().toString().trim(),register_email.getText().toString().trim(),"",register_address.getText().toString().trim(),imageUriString,selected_role,register_password.getText().toString().trim());
+//                    Toast.makeText(getApplicationContext(),new_user.toString(),Toast.LENGTH_LONG).show();
+                    Database register = new Database(Register.this);
+//                    register.register(new_user);
 
                 }
             }
