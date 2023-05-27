@@ -171,7 +171,7 @@ public class Database extends SQLiteOpenHelper {
                 String role = cursor.getString(roleIndex);
 
 
-                user = new UserClass(String.valueOf(id), name, email, address, image, phoneNo, password, role);
+                user = new UserClass(String.valueOf(id), name, email, phoneNo, address, image, role, password);
             }
         }
 

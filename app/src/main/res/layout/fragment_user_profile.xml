@@ -35,7 +35,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/userimage"
+            android:id="@+id/user_p_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="25dp"
@@ -74,7 +74,7 @@
                 android:layout_columnWeight="1" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/user_p_name"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/light_blue"
@@ -107,7 +107,7 @@
                 android:layout_columnWeight="1" />
 
             <EditText
-                android:id="@+id/useremail"
+                android:id="@+id/user_p_email"
                 android:inputType="textEmailAddress"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -139,7 +139,7 @@
                 android:textSize="15sp"
                 android:layout_columnWeight="1" />
             <EditText
-                android:id="@+id/userphoneno"
+                android:id="@+id/user_p_phoneno"
                 android:inputType="phone"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -171,7 +171,7 @@
                 android:textSize="15sp"
                 android:layout_columnWeight="1" />
             <EditText
-                android:id="@+id/userpassword"
+                android:id="@+id/user_p_password"
                 android:inputType="textPassword"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -202,7 +202,7 @@
                 android:textSize="15sp"
                 android:layout_columnWeight="1" />
             <EditText
-                android:id="@+id/useradderess"
+                android:id="@+id/user_p_adderess"
                 android:inputType="text"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
