@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -123,7 +124,13 @@ public class Register extends AppCompatActivity {
                         UserClass new_user = new UserClass("", register_name.getText().toString().trim(), register_email.getText().toString().trim(), "", register_address.getText().toString().trim(), imageUriString, selected_role, register_password.getText().toString().trim());
 //                    Toast.makeText(getApplicationContext(),new_user.toString(),Toast.LENGTH_LONG).show();
                         Database register = new Database(Register.this);
-//                    register.register(new_user);
+                        boolean check_register = register.register(new_user);
+                        if (check_register){
+                            Intent i = new Intent(getApplicationContext(), Login.class);
+                            startActivity(i);
+                        }else{
+                            Toast.makeText(getApplicationContext(),"Some Error Occured", Toast.LENGTH_LONG).show();
+                        }
                     }else{
                         if(email_check) {
                             register_email.setError("Enter a email");
