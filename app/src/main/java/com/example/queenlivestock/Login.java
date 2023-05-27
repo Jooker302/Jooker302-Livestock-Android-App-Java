@@ -2,7 +2,9 @@ package com.example.queenlivestock;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -70,8 +72,17 @@ public class Login extends AppCompatActivity {
 
                     if(email_check && password_check){
                         Database login = new Database(Login.this);
-                        boolean check_login = login.login(login_email.getText().toString(),login_password.getText().toString());
-                        if (check_login){
+                        int check_login = login.login(login_email.getText().toString(),login_password.getText().toString());
+                        if (check_login != -1){
+//                                Toast.makeText(getApplicationContext(),String.valueOf(check_login),Toast.LENGTH_LONG).show();
+                            UserClass get_user = login.get_user(check_login);
+
+                            SharedPreferences sharedPreferences = getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putInt("id", Integer.parseInt(get_user.getId()));
+                            editor.putString("role",get_user.getRole());
+                            editor.putBoolean("isLoggedIn", true);
+                            editor.apply();
                             Intent home = new Intent(getApplicationContext(),UserHome.class);
                             startActivity(home);
                         }else{

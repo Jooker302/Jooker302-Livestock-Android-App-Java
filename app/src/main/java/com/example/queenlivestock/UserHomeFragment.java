@@ -1,5 +1,7 @@
 package com.example.queenlivestock;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +26,7 @@ public class UserHomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Context context;
 
     public UserHomeFragment() {
         // Required empty public constructor
@@ -47,6 +51,11 @@ public class UserHomeFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -59,6 +68,15 @@ public class UserHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_user_home, container, false);
+
+        TextView test = view.findViewById(R.id.test);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
+        int id = sharedPreferences.getInt("id", 0);
+        Database db = new Database(context);
+        UserClass user = db.get_user(id);
+        test.setText("Welcome " + user.getName());
+
+        return view;
     }
 }

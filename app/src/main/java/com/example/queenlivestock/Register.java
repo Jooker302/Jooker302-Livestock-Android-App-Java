@@ -125,6 +125,7 @@ public class Register extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(),new_user.toString(),Toast.LENGTH_LONG).show();
                         Database register = new Database(Register.this);
                         boolean check_register = register.register(new_user);
+//                        Toast.makeText(getApplicationContext(),String.valueOf(check_register),Toast.LENGTH_LONG).show();
                         if (check_register){
                             Intent i = new Intent(getApplicationContext(), Login.class);
                             startActivity(i);
