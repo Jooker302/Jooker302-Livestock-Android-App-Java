@@ -8,8 +8,12 @@ import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Login extends AppCompatActivity {
 
@@ -21,6 +25,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        EditText login_email = findViewById(R.id.login_email);
+        EditText login_password = findViewById(R.id.login_password);
         signbutton = findViewById(R.id.signinbutton);
         TextView registernowlink = findViewById(R.id.registernowlink);
 
@@ -34,6 +40,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //register page
+
                 Intent i = new Intent(getApplicationContext(),Register.class);
                 startActivity(i);
             }
@@ -42,8 +49,48 @@ public class Login extends AppCompatActivity {
         signbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent home = new Intent(getApplicationContext(),UserHome.class);
-                startActivity(home);
+
+
+                if(login_email.getText().toString().matches("") || login_password.getText().toString().matches("")){
+                    if(login_email.getText().toString().matches("")){
+                        login_email.setError("Empty Email");
+                    }
+                    if(login_password.getText().toString().matches("")){
+                        login_password.setError("Empty Password");
+                    }
+
+                }else{
+
+                    String emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.com$";
+                    Pattern pattern = Pattern.compile(emailPattern);
+
+                    Matcher email_verify = pattern.matcher(login_email.getText().toString());
+                    boolean email_check = email_verify.matches();
+                    boolean password_check = login_password.getText().toString().length() >= 6;
+
+                    if(email_check && password_check){
+                        Database login = new Database(Login.this);
+                        boolean check_login = login.login(login_email.getText().toString(),login_password.getText().toString());
+                        if (check_login){
+                            Intent home = new Intent(getApplicationContext(),UserHome.class);
+                            startActivity(home);
+                        }else{
+                            login_email.setError("Invalid Email");
+                            login_password.setError("Invalid Password");
+                        }
+                    }else{
+                        if(email_check){
+                            login_email.setError("Enter a Email");
+                        }
+                        if(password_check){
+                            login_password.setError("Password should be greater than 6");
+                        }
+                    }
+
+                }
+
+//                Intent home = new Intent(getApplicationContext(),UserHome.class);
+//                startActivity(home);
             }
         });
 
