@@ -8,9 +8,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -128,6 +130,7 @@ public class Register extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(),String.valueOf(check_register),Toast.LENGTH_LONG).show();
                         if (check_register){
                             Intent i = new Intent(getApplicationContext(), Login.class);
+                            showNotification("Registration successful. Redirecting to login page.");
                             startActivity(i);
                         }else{
                             Toast.makeText(getApplicationContext(),"Some Error Occured", Toast.LENGTH_LONG).show();
@@ -151,4 +154,28 @@ public class Register extends AppCompatActivity {
         int flags = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(flags);
     }
+
+    private void showNotification(String message) {
+        Toast toast = new Toast(Register.this);
+        toast.setDuration(Toast.LENGTH_LONG);
+
+        // Inflate the custom layout
+        View view = getLayoutInflater().inflate(R.layout.custom_register_toast, null);
+        TextView toastText = view.findViewById(R.id.toast_text);
+        toastText.setText(message);
+
+        toast.setView(view);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.show();
+
+        // Delay the toast dismissal after 3 seconds
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, 3000); // Adjust the duration as needed (in milliseconds)
+    }
+
 }
