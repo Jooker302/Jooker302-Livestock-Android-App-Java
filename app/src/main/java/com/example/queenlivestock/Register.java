@@ -27,6 +27,8 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        hideBottomNavigationBar();
         setContentView(R.layout.activity_register);
 
         TextView loginlink = findViewById(R.id.loginlink);
@@ -115,5 +117,11 @@ public class Register extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void hideBottomNavigationBar() {
+        View decorView = getWindow().getDecorView();
+        int flags = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        decorView.setSystemUiVisibility(flags);
     }
 }

@@ -25,12 +25,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/profile"
-            android:textSize="25sp"
-            android:textColor="@color/light_blue"
-            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:fontFamily="@font/main_font"
             android:gravity="center"
-            android:layout_gravity="center"/>
+            android:text="@string/profile"
+            android:textAllCaps="true"
+            android:textColor="@color/light_blue"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/userimage"

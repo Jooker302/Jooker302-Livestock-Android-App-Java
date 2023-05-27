@@ -57,6 +57,15 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CreatePostTable);
 
 
+        ContentValues cv = new ContentValues();
+
+        cv.put(PASSWORD,"123456789");
+        cv.put(EMAIL,"admin@gmail.com");
+        cv.put(ROLE,"admin");
+        SQLiteDatabase db = this.getWritableDatabase();
+        long check = db.insert(USERS, null, cv);
+
+
 
     }
 
@@ -94,4 +103,26 @@ public class Database extends SQLiteOpenHelper {
             }
         }
     }
+
+
+    public boolean login(String email, String password){
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + USERS + " WHERE " + EMAIL + " = '" + email + "' AND " + PASSWORD + " = '" + password + "'";
+
+        Cursor result = db.rawQuery(query,null);
+
+        if(result.moveToFirst()){
+            result.close();
+            db.close();
+            return true;
+        }else{
+            result.close();
+            db.close();
+            return false;
+        }
+    }
+
+
 }
