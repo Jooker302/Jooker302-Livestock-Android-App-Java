@@ -180,5 +180,25 @@ public class Database extends SQLiteOpenHelper {
         return user;
     }
 
+    public boolean update_user(UserClass updated_user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(NAME, updated_user.getName());
+        cv.put(ADDRESS, updated_user.getAddress());
+        cv.put(IMAGE, updated_user.getImage());
+        cv.put(PHONE_NO, updated_user.getPhone_no());
+        cv.put(PASSWORD, updated_user.getPassword());
+        cv.put(ROLE, updated_user.getRole());
+
+        String whereClause = ID + " = ?";
+        String[] whereArgs = { String.valueOf(updated_user.getId()) };
+
+        int rowsAffected = db.update(USERS, cv, whereClause, whereArgs);
+        db.close();
+
+        return true;
+    }
+
 
 }

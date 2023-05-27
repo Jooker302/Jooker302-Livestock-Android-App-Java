@@ -136,10 +136,10 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Some Error Occured", Toast.LENGTH_LONG).show();
                         }
                     }else{
-                        if(email_check) {
+                        if(!email_check) {
                             register_email.setError("Enter a email");
                         }
-                        if (password_check){
+                        if (!password_check){
                             register_password.setError("Password should be greater than 6");
                         }
                     }
