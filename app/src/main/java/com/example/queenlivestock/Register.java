@@ -20,6 +20,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Register extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST_CODE = 1;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
@@ -106,13 +109,30 @@ public class Register extends AppCompatActivity {
                     }
 
                 } else {
-                    RadioButton radioButton = findViewById(selectedId);
-                    String selected_role = radioButton.getText().toString().toLowerCase();
+                    String emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.com$";
+                    Pattern pattern = Pattern.compile(emailPattern);
+
+                    Matcher email_verify = pattern.matcher(register_email.getText().toString());
+                    boolean email_check = email_verify.matches();
+                    boolean password_check = register_password.getText().toString().length() >= 6;
+
+
+                    if (email_check && password_check) {
+                        RadioButton radioButton = findViewById(selectedId);
+                        String selected_role = radioButton.getText().toString().toLowerCase();
 //                    Toast.makeText(getApplicationContext(),"Empty",Toast.LENGTH_SHORT).show();
-                    UserClass new_user = new UserClass("",register_name.getText().toString().trim(),register_email.getText().toString().trim(),"",register_address.getText().toString().trim(),imageUriString,selected_role,register_password.getText().toString().trim());
+                        UserClass new_user = new UserClass("", register_name.getText().toString().trim(), register_email.getText().toString().trim(), "", register_address.getText().toString().trim(), imageUriString, selected_role, register_password.getText().toString().trim());
 //                    Toast.makeText(getApplicationContext(),new_user.toString(),Toast.LENGTH_LONG).show();
-                    Database register = new Database(Register.this);
+                        Database register = new Database(Register.this);
 //                    register.register(new_user);
+                    }else{
+                        if(email_check) {
+                            register_email.setError("Enter a email");
+                        }
+                        if (password_check){
+                            register_password.setError("Password should be greater than 6");
+                        }
+                    }
 
                 }
             }
