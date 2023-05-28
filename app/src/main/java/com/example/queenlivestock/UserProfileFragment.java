@@ -11,9 +11,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -192,6 +194,7 @@ public class UserProfileFragment extends Fragment {
                         Database update_db = new Database(context);
                         boolean check = update_db.update_user(update_user);
                         if (check){
+                            showNotification("Profile Updated");
                             refreshFragment();
                         }
                     }else{
@@ -218,6 +221,29 @@ public class UserProfileFragment extends Fragment {
                 .detach(this)
                 .attach(this)
                 .commit();
+    }
+
+    private void showNotification(String message) {
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_LONG);
+
+        // Inflate the custom layout
+        View view = getLayoutInflater().inflate(R.layout.custom_register_toast, null);
+        TextView toastText = view.findViewById(R.id.toast_text);
+        toastText.setText(message);
+
+        toast.setView(view);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.show();
+
+        // Delay the toast dismissal after 3 seconds
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, 3000); // Adjust the duration as needed (in milliseconds)
     }
 
 }
