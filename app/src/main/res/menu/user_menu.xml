@@ -9,10 +9,17 @@
         android:icon="@drawable/usersearch"
         android:title="Search" />
 
-<!--    <item-->
-<!--        android:id="@+id/navigation_notifications"-->
-<!--        android:icon="@drawable/ic_notifications"-->
-<!--        android:title="Notifications" />-->
+    <item
+        android:id="@+id/navigation_add_post"
+        android:icon="@drawable/userpostadd"
+        android:title="Add Post" />
+
+    <item
+        android:id="@+id/navigation_view_post"
+        android:icon="@drawable/userpostview"
+        android:title="View Post"
+        />
+
 
     <item
         android:id="@+id/navigation_profile"

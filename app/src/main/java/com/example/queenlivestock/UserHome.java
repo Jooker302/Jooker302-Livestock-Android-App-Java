@@ -16,6 +16,8 @@ public class UserHome extends AppCompatActivity implements BottomNavigationView.
     UserHomeFragment userhomeFragment;
     UserProfileFragment userprofileFragment;
     UserSearchFragment usersearchFragment;
+    UserAddPostFragment useraddpostFragment;
+    UserViewPostFragment userviewpostFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,12 @@ public class UserHome extends AppCompatActivity implements BottomNavigationView.
         if (userprofileFragment != null) {
             transaction.hide(userprofileFragment);
         }
+        if (useraddpostFragment != null) {
+            transaction.hide(useraddpostFragment);
+        }
+        if (userviewpostFragment != null) {
+            transaction.hide(userviewpostFragment);
+        }
 
         if (item.getItemId() == R.id.navigation_home) {
             if (userhomeFragment == null) {
@@ -93,6 +101,22 @@ public class UserHome extends AppCompatActivity implements BottomNavigationView.
                 transaction.add(R.id.fragment_container, userprofileFragment, "MyFragment");
             } else {
                 transaction.show(userprofileFragment);
+            }
+
+        } else if (item.getItemId() == R.id.navigation_add_post) {
+            if (useraddpostFragment == null) {
+                useraddpostFragment = new UserAddPostFragment();
+                transaction.add(R.id.fragment_container, useraddpostFragment, "MyFragment");
+            } else {
+                transaction.show(useraddpostFragment);
+            }
+
+        } else if (item.getItemId() == R.id.navigation_view_post) {
+            if (userviewpostFragment == null) {
+                userviewpostFragment = new UserViewPostFragment();
+                transaction.add(R.id.fragment_container, userviewpostFragment, "MyFragment");
+            } else {
+                transaction.show(userviewpostFragment);
             }
 
         }
