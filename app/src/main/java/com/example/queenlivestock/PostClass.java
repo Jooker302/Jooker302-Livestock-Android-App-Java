@@ -16,7 +16,7 @@ public class PostClass {
         this.description = description != null ? description : "";
         this.price = price != null ? price : "";
         this.user_id = user_id != null ? user_id : "";
-        this.active = active != null ? active : "";
+        this.active = active != null ? active : "1";
         this.image = image != null ? image : "";
     }
 

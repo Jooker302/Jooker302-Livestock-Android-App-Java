@@ -11,13 +11,16 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -133,10 +136,63 @@ public class UserAddPostFragment extends Fragment {
         post_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"Test",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context,"Test",Toast.LENGTH_SHORT).show();
+                if(post_title.getText().toString().matches("")
+                || post_description.getText().toString().matches("")
+                || post_price.getText().toString().matches("")
+                || imageUriString.matches("")){
+
+                    if(post_title.getText().toString().matches("")){
+                        post_title.setError("Empty Title");
+                    }
+                    if(post_description.getText().toString().matches("")){
+                        post_description.setError("Empty Description");
+                    }
+                    if(post_price.getText().toString().matches("")){
+                        post_price.setError("Empty Price");
+                    }
+                    if(imageUriString.matches("")){
+//                        post_title.setError("Empty Title");
+                        Toast.makeText(context,"Upload Image",Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    PostClass add_post = new PostClass("",post_title.getText().toString().trim(),post_description.getText().toString().trim(),post_price.getText().toString().trim(),String.valueOf(id),"",imageUriString);
+                    Database new_post = new Database(context);
+                    boolean check = new_post.add_post(add_post);
+                    if (check){
+                        showNotification("Post Added");
+                    }else{
+                        Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
         return view;
     }
+
+    private void showNotification(String message) {
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_LONG);
+
+        // Inflate the custom layout
+        View view = getLayoutInflater().inflate(R.layout.custom_register_toast, null);
+        TextView toastText = view.findViewById(R.id.toast_text);
+        toastText.setText(message);
+
+        toast.setView(view);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.show();
+
+        // Delay the toast dismissal after 3 seconds
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, 3000); // Adjust the duration as needed (in milliseconds)
+    }
+
 }

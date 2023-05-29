@@ -200,5 +200,28 @@ public class Database extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean add_post(PostClass new_post){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(TITLE,new_post.getTitle());
+        cv.put(DESCRIPTION,new_post.getDescription());
+        cv.put(PRICE,new_post.getPrice());
+        cv.put(ACTIVE,new_post.getActive());
+        cv.put(IMAGE,new_post.getImage());
+        cv.put(USER_ID,new_post.getUser_id());
+
+
+        long check = db.insert(POSTS, null, cv);
+
+        if (check == -1) {
+            return false;
+        } else {
+            return true;
+        }
+
+
+    }
+
 
 }
