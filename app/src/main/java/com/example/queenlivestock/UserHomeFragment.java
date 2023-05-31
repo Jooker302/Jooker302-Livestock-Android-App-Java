@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,16 +70,24 @@ public class UserHomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user_home, container, false);
+        ListView allPostsList = view.findViewById(R.id.home_post_list);
+//        TextView userNameTextView = view.findViewById(R.id.home_user_name);
 
-        TextView test = view.findViewById(R.id.test);
         SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
-        int id = sharedPreferences.getInt("id", 0);
+        int userId = sharedPreferences.getInt("id", 0);
+
         Database db = new Database(context);
-        UserClass user = db.get_user(id);
-        test.setText("Welcome " + user.getName());
+        UserClass user = db.get_user(userId);
+//        userNameTextView.setText("Welcome " + user.getName());
+
+        List<PostClass> posts = db.get_all_posts();
+
+        // Create an instance of the custom adapter and set it to the ListView
+        PostAdapter adapter = new PostAdapter(context, posts);
+        allPostsList.setAdapter(adapter);
 
         return view;
     }
+
 }

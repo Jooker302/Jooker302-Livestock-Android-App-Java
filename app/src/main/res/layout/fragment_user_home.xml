@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserHomeFragment">
 
 
-    <TextView
-        android:id="@+id/test"
+<!--    <TextView-->
+<!--        android:id="@+id/test"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Home Fragment" />-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home Fragment" />
+        android:orientation="horizontal">
 
+<!--        <TextView-->
+<!--            android:id="@+id/home_user_name"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="User"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:fontFamily="@font/main_font"-->
+<!--            android:textColor="@color/light_blue"/>-->
+
+
+<!--        <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <ListView-->
+<!--                android:id="@+id/home_post_list"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"/>-->
+
+<!--        </ScrollView>-->
+
+
+        <ListView
+            android:id="@+id/home_post_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 
 </FrameLayout>
