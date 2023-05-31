@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Database extends SQLiteOpenHelper {
 
     public static final String USERS = "users";
@@ -222,6 +225,45 @@ public class Database extends SQLiteOpenHelper {
 
 
     }
+
+
+    public List<PostClass> get_all_posts() {
+        List<PostClass> posts = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"ID", "TITLE", "DESCRIPTION", "PRICE", "IMAGE", "USER_ID", "ACTIVE"};
+        String selection = "ACTIVE = ?";
+        String[] selectionArgs = {"1"};
+        Cursor cursor = db.query("POSTS", columns, selection, selectionArgs, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id_index = cursor.getColumnIndex("ID");
+                String id = cursor.getString(id_index);
+                int title_index = cursor.getColumnIndex("TITLE");
+                String title = cursor.getString(title_index);
+                int description_index = cursor.getColumnIndex("DESCRIPTION");
+                String description = cursor.getString(description_index);
+                int price_index = cursor.getColumnIndex("PRICE");
+                String price = cursor.getString(price_index);
+                int image_index = cursor.getColumnIndex("IMAGE");
+                String image = cursor.getString(image_index);
+                int user_id_index = cursor.getColumnIndex("USER_ID");
+                String userId = cursor.getString(user_id_index);
+                int active_index = cursor.getColumnIndex("ACTIVE");
+                String active = cursor.getString(active_index);
+
+                PostClass post = new PostClass(id, title, description, price, userId, active, image);
+                posts.add(post);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return posts;
+    }
+
 
 
 }
