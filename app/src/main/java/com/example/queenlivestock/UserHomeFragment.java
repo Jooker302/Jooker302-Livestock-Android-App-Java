@@ -72,14 +72,14 @@ public class UserHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_home, container, false);
         ListView allPostsList = view.findViewById(R.id.home_post_list);
-//        TextView userNameTextView = view.findViewById(R.id.home_user_name);
+        TextView userNameTextView = view.findViewById(R.id.home_user_name);
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("id", 0);
 
         Database db = new Database(context);
         UserClass user = db.get_user(userId);
-//        userNameTextView.setText("Welcome " + user.getName());
+        userNameTextView.setText("Welcome " + user.getName());
 
         List<PostClass> posts = db.get_all_posts();
 

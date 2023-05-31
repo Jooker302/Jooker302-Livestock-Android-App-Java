@@ -3,24 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="8dp">
 
     <ImageView
         android:id="@+id/post_image"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:scaleType="centerInside"
         android:adjustViewBounds="true" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/post_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:textColor="@color/light_blue"
         android:textStyle="bold" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/post_price"
+        android:textColor="@color/light_blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp" />

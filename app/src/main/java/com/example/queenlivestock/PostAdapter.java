@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import com.example.queenlivestock.PostClass;
 import com.example.queenlivestock.R;
@@ -26,12 +29,18 @@ public class PostAdapter extends ArrayAdapter<PostClass> {
         this.posts = posts;
     }
 
+
+
+// ...
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
-        }
+        // ...
 
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.item_post, parent, false);
+        }
         PostClass post = posts.get(position);
 
         ImageView imageView = convertView.findViewById(R.id.post_image);
@@ -40,13 +49,20 @@ public class PostAdapter extends ArrayAdapter<PostClass> {
 
         // Set the name and price values from the PostClass object
         nameTextView.setText(post.getTitle());
-        priceTextView.setText(post.getPrice());
+        priceTextView.setText("Rs " + post.getPrice());
 
-        // Set the image using its local file URI
-        Uri imageUri = Uri.parse(post.getImage());
-        imageView.setImageURI(imageUri);
+        // Load the image using Glide
+        RequestOptions requestOptions = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL) // Cache the image
+                .centerCrop(); // Scale and crop the image
+
+        Glide.with(context)
+                .load(post.getImage())
+                .apply(requestOptions)
+                .into(imageView);
 
         return convertView;
     }
+
 
 }
