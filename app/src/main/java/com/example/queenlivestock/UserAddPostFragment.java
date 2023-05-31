@@ -95,6 +95,7 @@ public class UserAddPostFragment extends Fragment {
         int id = sharedPreferences.getInt("id", 0);
         String role = sharedPreferences.getString("role","");
 
+        imageUriString = "";
         post_image = view.findViewById(R.id.add_post_image);
         post_title = view.findViewById(R.id.post_title);
         post_description = view.findViewById(R.id.post_description);

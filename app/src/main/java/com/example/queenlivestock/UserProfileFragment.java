@@ -107,6 +107,7 @@ public class UserProfileFragment extends Fragment {
         user_p_email = view.findViewById(R.id.user_p_email);
         user_p_password = view.findViewById(R.id.user_p_password);
 
+
         SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
         int id = sharedPreferences.getInt("id", 0);
         String role = sharedPreferences.getString("role","");
@@ -119,6 +120,7 @@ public class UserProfileFragment extends Fragment {
         user_p_password.setText(user.getPassword());
         user_p_name.setText(user.getName());
         user_p_phoneno.setText(user.getPhone_no());
+        imageUriString = user.getImage();
 
         String image_check = user.getImage();
 
