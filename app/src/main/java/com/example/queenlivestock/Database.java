@@ -306,4 +306,58 @@ public class Database extends SQLiteOpenHelper {
 
 
 
+    public PostClass get_post(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + POSTS + " WHERE " + ID + " = '" + id + "'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        PostClass post = null;
+
+        if (cursor.moveToFirst()) {
+            int id_index = cursor.getColumnIndex(ID);
+
+            int title_index = cursor.getColumnIndex(TITLE);
+
+            int description_index = cursor.getColumnIndex(DESCRIPTION);
+
+            int price_index = cursor.getColumnIndex(PRICE);
+
+            int image_index = cursor.getColumnIndex(IMAGE);
+
+            int user_id_index = cursor.getColumnIndex(USER_ID);
+
+            int active_index = cursor.getColumnIndex(ACTIVE);
+
+
+            // Check if all column indexes are valid
+            if (id_index >= 0 && title_index >= 0 && description_index >= 0 && price_index >= 0 &&
+                    image_index >= 0 && user_id_index >= 0 && active_index >= 0) {
+
+
+
+                String title = cursor.getString(title_index);
+
+                String description = cursor.getString(description_index);
+
+                String price = cursor.getString(price_index);
+
+                String image = cursor.getString(image_index);
+
+                String userId = cursor.getString(user_id_index);
+
+                String active = cursor.getString(active_index);
+
+
+                post = new PostClass(String.valueOf(id), title, description ,price ,userId, active, image);
+            }
+        }
+
+        cursor.close();
+
+        return post;
+    }
+
+
+
 }
