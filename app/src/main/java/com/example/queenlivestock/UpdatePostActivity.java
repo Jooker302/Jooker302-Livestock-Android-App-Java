@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class UpdatePostActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST_CODE = 1;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     String imageUriString;
+    CheckBox update_post_active;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,9 @@ public class UpdatePostActivity extends AppCompatActivity {
         update_post_price = findViewById(R.id.update_post_price);
         update_post_submit = findViewById(R.id.update_post_submit);
         update_post_image = findViewById(R.id.update_post_image);
+        update_post_active = findViewById(R.id.update_post_active);
+
+
 
 
 
@@ -51,6 +56,12 @@ public class UpdatePostActivity extends AppCompatActivity {
         update_post_description.setText(update_post.getDescription());
         update_post_price.setText(update_post.getPrice());
         imageUriString = update_post.getImage();
+
+        if(update_post.getActive().matches("1")){
+            update_post_active.setChecked(true);
+        }else {
+            update_post_active.setChecked(false);
+        }
 
         String image_check = update_post.getImage();
 
@@ -113,7 +124,13 @@ public class UpdatePostActivity extends AppCompatActivity {
                     }
 
                 }else{
-                    PostClass up_post = new PostClass("",update_post_title.getText().toString().trim(),update_post_description.getText().toString().trim(),update_post_price.getText().toString().trim(),update_post.getUser_id(),update_post.getActive(),imageUriString);
+                    String active_status;
+                    if(update_post_active.isChecked()){
+                        active_status = "1";
+                    }else{
+                        active_status = "0";
+                    }
+                    PostClass up_post = new PostClass(postId,update_post_title.getText().toString().trim(),update_post_description.getText().toString().trim(),update_post_price.getText().toString().trim(),update_post.getUser_id(),active_status,imageUriString);
                     Database change_post = new Database(UpdatePostActivity.this);
                     boolean check = change_post.update_post(up_post);
                     if (check){
