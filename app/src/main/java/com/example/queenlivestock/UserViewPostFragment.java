@@ -84,8 +84,8 @@ public class UserViewPostFragment extends Fragment {
         Database db = new Database(context);
         List<PostClass> yours_posts = db.get_your_posts(s_userId);
 
-        PostAdapter adapter = new PostAdapter(context, yours_posts);
-        yours_post_list.setAdapter(adapter);
+        PostAdapter view_post_adapter = new PostAdapter(context, yours_posts);
+        yours_post_list.setAdapter(view_post_adapter);
 
 
         yours_post_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

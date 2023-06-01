@@ -86,8 +86,8 @@ public class UserHomeFragment extends Fragment {
         List<PostClass> posts = db.get_all_posts();
 
         // Create an instance of the custom adapter and set it to the ListView
-        PostAdapter adapter = new PostAdapter(context, posts);
-        allPostsList.setAdapter(adapter);
+        PostAdapter user_home_adapter = new PostAdapter(context, posts);
+        allPostsList.setAdapter(user_home_adapter);
 
 
         allPostsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

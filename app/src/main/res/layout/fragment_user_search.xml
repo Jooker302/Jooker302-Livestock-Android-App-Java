@@ -64,7 +64,7 @@
 
 
         <ListView
-            android:id="@+id/view_post_list"
+            android:id="@+id/view_post_search_list"
             android:layout_marginTop="10sp"
             android:layout_width="match_parent"
             android:foregroundGravity="center"
