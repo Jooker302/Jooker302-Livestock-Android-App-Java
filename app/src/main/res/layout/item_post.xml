@@ -4,7 +4,17 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="8dp">
+    >
+
+    <LinearLayout
+        android:id="@+id/post_inner_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/double_light_blue"
+        android:gravity="center"
+        android:padding="8dp">
+
 
     <ImageView
         android:id="@+id/post_image"
@@ -19,15 +29,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:textColor="@color/light_blue"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <TextView
         android:gravity="center"
         android:id="@+id/post_price"
-        android:textColor="@color/light_blue"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
