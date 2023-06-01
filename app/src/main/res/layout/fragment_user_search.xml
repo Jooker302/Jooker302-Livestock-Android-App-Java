@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserSearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Search Fragment" />
+        android:background="@color/white"
+        >
+
+        <LinearLayout
+            android:id="@+id/search_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/search_post"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:hint="Search"
+                android:gravity="center"
+                android:layout_marginTop="15sp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/main_font"
+                android:textColor="@color/light_blue" />
+
+            <Button
+                android:id="@+id/search_post_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="Search"
+                android:backgroundTint="@color/light_blue"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+
+
+
+
+        <!--        <ScrollView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent">-->
+
+        <!--            <ListView-->
+        <!--                android:id="@+id/home_post_list"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"/>-->
+
+        <!--        </ScrollView>-->
+
+
+        <ListView
+            android:id="@+id/view_post_list"
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:foregroundGravity="center"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_section" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
