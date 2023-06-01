@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserViewPostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/white"
+        >
+
+        <TextView
+
+            android:id="@+id/view_post_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Posts"
+            android:gravity="center"
+            android:layout_marginTop="15sp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/main_font"
+            android:textColor="@color/light_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <!--        <ScrollView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent">-->
+
+        <!--            <ListView-->
+        <!--                android:id="@+id/home_post_list"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"/>-->
+
+        <!--        </ScrollView>-->
+
+
+        <ListView
+            android:id="@+id/view_post_list"
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:foregroundGravity="center"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_post_heading" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

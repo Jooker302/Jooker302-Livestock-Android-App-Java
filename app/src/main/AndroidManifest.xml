@@ -16,6 +16,9 @@
         android:theme="@style/Theme.QueenLiveStock"
         tools:targetApi="31">
         <activity
+            android:name=".UpdatePostActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserHome"
             android:exported="false" />
         <activity
@@ -34,7 +37,5 @@
             </intent-filter>
         </activity>
     </application>
-
-
 
 </manifest>
