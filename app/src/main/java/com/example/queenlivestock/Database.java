@@ -360,4 +360,32 @@ public class Database extends SQLiteOpenHelper {
 
 
 
+
+    public boolean update_post(PostClass updated_post) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+//        cv.put(NAME, updated_user.getName());
+//        cv.put(ADDRESS, updated_user.getAddress());
+//        cv.put(IMAGE, updated_user.getImage());
+//        cv.put(PHONE_NO, updated_user.getPhone_no());
+//        cv.put(PASSWORD, updated_user.getPassword());
+//        cv.put(ROLE, updated_user.getRole());
+        cv.put(TITLE,updated_post.getTitle());
+        cv.put(DESCRIPTION,updated_post.getDescription());
+        cv.put(PRICE,updated_post.getPrice());
+        cv.put(USER_ID,updated_post.getUser_id());
+        cv.put(ACTIVE,updated_post.getActive());
+        cv.put(IMAGE,updated_post.getImage());
+
+        String whereClause = ID + " = ?";
+        String[] whereArgs = { String.valueOf(updated_post.getId()) };
+
+        int rowsAffected = db.update(POSTS, cv, whereClause, whereArgs);
+        db.close();
+
+        return true;
+    }
+
+
 }
