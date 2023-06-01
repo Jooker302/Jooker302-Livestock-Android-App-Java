@@ -98,7 +98,7 @@ public class UserViewPostFragment extends Fragment {
                 String postId = selectedPost.getId();
 
                 // Navigate to the next activity with the post ID
-                Intent intent = new Intent(getActivity(), NextActivity.class);
+                Intent intent = new Intent(getActivity(), UpdatePostActivity.class);
                 intent.putExtra("postId", postId);
                 startActivity(intent);
             }

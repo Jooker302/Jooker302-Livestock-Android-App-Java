@@ -4,6 +4,220 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_blue"
     tools:context=".UpdatePostActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="45dp"
+        android:foregroundGravity="center"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="45dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/registerheading"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            android:fontFamily="@font/main_font"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="@string/app_heading"-->
+        <!--            android:textColor="@color/light_blue"-->
+        <!--            android:textSize="30sp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/update_post_text"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/main_font"
+            android:text="@string/update_post"
+            android:textAllCaps="true"
+            android:textColor="@color/light_blue"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/update_post_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="120dp"
+            android:background="@drawable/round_background"
+            android:scaleType="fitCenter"
+            android:src="@drawable/placeholder_image"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_post_text" />
+
+
+        <EditText
+            android:id="@+id/update_post_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Title"
+            android:inputType="text"
+            android:textColor="@color/light_blue"
+            android:textColorHighlight="@color/light_blue"
+            android:textColorHint="@color/double_light_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_post_image" />
+
+        <EditText
+            android:id="@+id/update_post_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Description"
+            android:inputType="text"
+            android:textColor="@color/light_blue"
+            android:textColorHighlight="@color/light_blue"
+            android:textColorHint="@color/double_light_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_post_title" />
+
+        <EditText
+            android:id="@+id/update_post_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Price"
+            android:inputType="number"
+            android:textColor="@color/light_blue"
+            android:textColorHighlight="@color/light_blue"
+            android:textColorHint="@color/double_light_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_post_description" />
+
+        <!--        <EditText-->
+        <!--            android:id="@+id/register_password"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="30dp"-->
+        <!--            android:layout_marginTop="25dp"-->
+        <!--            android:layout_marginEnd="30dp"-->
+        <!--            android:backgroundTint="@color/light_blue"-->
+        <!--            android:ems="10"-->
+        <!--            android:gravity="center"-->
+        <!--            android:hint="Password"-->
+        <!--            android:inputType="textPassword"-->
+        <!--            android:textColor="@color/light_blue"-->
+        <!--            android:textColorHighlight="@color/light_blue"-->
+        <!--            android:textColorHint="@color/double_light_blue"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/register_address" />-->
+
+        <!--        <RadioGroup-->
+        <!--            android:id="@+id/register_user_role"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/register_password">-->
+
+        <!--            <RadioButton-->
+        <!--                android:id="@+id/role_user"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:checked="true"-->
+        <!--                android:text="@string/user"-->
+        <!--                android:textColor="@color/black" />-->
+
+        <!--            <RadioButton-->
+        <!--                android:id="@+id/role_seller"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="@string/seller"-->
+        <!--                android:textColor="@color/black" />-->
+
+        <!--        </RadioGroup>-->
+
+
+        <Button
+            android:id="@+id/update_post_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:backgroundTint="@color/light_blue"
+            android:text="@string/update_post"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_post_price" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView4"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:text="@string/login_check"-->
+        <!--            android:textColor="@color/light_blue"-->
+        <!--            android:textSize="14sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/register_button" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/loginlink"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            android:layout_marginBottom="20dp"-->
+        <!--            android:text="@string/login_now"-->
+        <!--            android:textColor="@color/lightbit_blue"-->
+        <!--            android:textSize="14sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
