@@ -1,6 +1,7 @@
 package com.example.queenlivestock;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -86,6 +88,25 @@ public class UserHomeFragment extends Fragment {
         // Create an instance of the custom adapter and set it to the ListView
         PostAdapter adapter = new PostAdapter(context, posts);
         allPostsList.setAdapter(adapter);
+
+
+        allPostsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected post
+                PostClass selectedPost = posts.get(position);
+
+                // Get the post ID
+                String postId = selectedPost.getId();
+
+                // Navigate to the next activity with the post ID
+                Intent intent = new Intent(getActivity(), PostDetailActivity.class);
+                intent.putExtra("postId", postId);
+                startActivity(intent);
+            }
+        });
+
+
 
         return view;
     }

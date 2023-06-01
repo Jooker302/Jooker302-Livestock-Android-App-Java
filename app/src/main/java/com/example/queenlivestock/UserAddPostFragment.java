@@ -170,6 +170,9 @@ public class UserAddPostFragment extends Fragment {
             }
         });
 
+
+
+
         return view;
     }
 
