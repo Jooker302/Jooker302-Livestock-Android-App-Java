@@ -31,6 +31,12 @@ public class UpdatePostActivity extends AppCompatActivity {
     CheckBox update_post_active;
 
     @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        Intent i = new Intent(this,UserHome.class);
+        startActivity(i);
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_post);

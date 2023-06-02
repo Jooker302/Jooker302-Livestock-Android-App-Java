@@ -78,6 +78,10 @@ public class UserHomeFragment extends Fragment {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("id", 0);
+//        SharedPreferences sharedPreferences = getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("home_page", Integer.parseInt("1"));
+        editor.apply();
 
         Database db = new Database(context);
         UserClass user = db.get_user(userId);

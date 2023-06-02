@@ -82,6 +82,7 @@ public class Login extends AppCompatActivity {
                             editor.putInt("id", Integer.parseInt(get_user.getId()));
                             editor.putString("role",get_user.getRole());
                             editor.putBoolean("isLoggedIn", true);
+                            editor.putInt("home_page", Integer.parseInt("1"));
                             editor.apply();
                             Intent home = new Intent(getApplicationContext(),UserHome.class);
                             startActivity(home);

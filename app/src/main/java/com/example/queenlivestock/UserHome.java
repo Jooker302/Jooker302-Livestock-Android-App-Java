@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -12,12 +14,25 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class UserHome extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private static final int TIME_DELAY = 2000;
+    private static long back_pressed;
     BottomNavigationView bottomnavigation;
     UserHomeFragment userhomeFragment;
     UserProfileFragment userprofileFragment;
     UserSearchFragment usersearchFragment;
     UserAddPostFragment useraddpostFragment;
     UserViewPostFragment userviewpostFragment;
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        if (back_pressed + TIME_DELAY > System.currentTimeMillis()) {
+            finishAffinity();
+        } else {
+            Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+        back_pressed = System.currentTimeMillis();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +42,28 @@ public class UserHome extends AppCompatActivity implements BottomNavigationView.
         bottomnavigation = findViewById(R.id.bottom_navigation);
 
         bottomnavigation.setOnItemSelectedListener(this);
-        bottomnavigation.setSelectedItemId(R.id.navigation_home);
+
+
+            SharedPreferences sharedPreferences = getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
+            int last_page = sharedPreferences.getInt("home_page", 0);
+            switch (last_page){
+                case 1:
+                    bottomnavigation.setSelectedItemId(R.id.navigation_home);
+                    break;
+                case 2:
+                    bottomnavigation.setSelectedItemId(R.id.navigation_search);
+                    break;
+                case 3:
+                    bottomnavigation.setSelectedItemId(R.id.navigation_add_post);
+                    break;
+                case 4:
+                    bottomnavigation.setSelectedItemId(R.id.navigation_view_post);
+                    break;
+                case 5:
+                    bottomnavigation.setSelectedItemId(R.id.navigation_profile);
+                    break;
+
+        }
     }
 
 

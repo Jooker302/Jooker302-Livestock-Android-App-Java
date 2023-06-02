@@ -2,6 +2,7 @@ package com.example.queenlivestock;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -76,6 +77,11 @@ public class UserSearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("home_page", Integer.parseInt("2"));
+        editor.apply();
+
         View view = inflater.inflate(R.layout.fragment_user_search, container, false);
         EditText search_post = view.findViewById(R.id.search_post);
         Button search_post_button = view.findViewById(R.id.search_post_button);

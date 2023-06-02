@@ -2,6 +2,7 @@ package com.example.queenlivestock;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -12,6 +13,14 @@ public class PostDetailActivity extends AppCompatActivity {
     TextView detail_post_description;
     TextView detail_post_price;
     ImageView detail_view_image;
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        Intent i = new Intent(this,UserHome.class);
+        startActivity(i);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -94,6 +94,9 @@ public class UserAddPostFragment extends Fragment {
         SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
         int id = sharedPreferences.getInt("id", 0);
         String role = sharedPreferences.getString("role","");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("home_page", Integer.parseInt("3"));
+        editor.apply();
 
         imageUriString = "";
         post_image = view.findViewById(R.id.add_post_image);
@@ -154,7 +157,8 @@ public class UserAddPostFragment extends Fragment {
                     }
                     if(imageUriString.matches("")){
 //                        post_title.setError("Empty Title");
-                        Toast.makeText(context,"Upload Image",Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context,"Upload Image",Toast.LENGTH_SHORT).show();
+                        showErrorNotification("Upload Image");
                     }
 
                 }else{
@@ -163,8 +167,11 @@ public class UserAddPostFragment extends Fragment {
                     boolean check = new_post.add_post(add_post);
                     if (check){
                         showNotification("Post Added");
+                        Intent i = new Intent(context,UserHome.class);
+                        startActivity(i);
                     }else{
-                        Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show();
+                        showErrorNotification("Some Error Occurred");
                     }
                 }
             }
@@ -183,6 +190,29 @@ public class UserAddPostFragment extends Fragment {
         // Inflate the custom layout
         View view = getLayoutInflater().inflate(R.layout.custom_register_toast, null);
         TextView toastText = view.findViewById(R.id.toast_text);
+        toastText.setText(message);
+
+        toast.setView(view);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.show();
+
+        // Delay the toast dismissal after 3 seconds
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, 3000); // Adjust the duration as needed (in milliseconds)
+    }
+
+    private void showErrorNotification(String message) {
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_LONG);
+
+        // Inflate the custom layout
+        View view = getLayoutInflater().inflate(R.layout.custom_error_toast, null);
+        TextView toastText = view.findViewById(R.id.toast_error_text);
         toastText.setText(message);
 
         toast.setView(view);

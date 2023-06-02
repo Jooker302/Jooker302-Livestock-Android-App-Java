@@ -80,6 +80,9 @@ public class UserViewPostFragment extends Fragment {
         SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("id", 0);
         String s_userId = String.valueOf(userId);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("home_page", Integer.parseInt("4"));
+        editor.apply();
 
         Database db = new Database(context);
         List<PostClass> yours_posts = db.get_your_posts(s_userId);

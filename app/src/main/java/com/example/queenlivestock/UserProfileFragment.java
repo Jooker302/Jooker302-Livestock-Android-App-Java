@@ -111,6 +111,10 @@ public class UserProfileFragment extends Fragment {
         SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
         int id = sharedPreferences.getInt("id", 0);
         String role = sharedPreferences.getString("role","");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("home_page", Integer.parseInt("5"));
+        editor.apply();
+
 
         Database db = new Database(context);
         UserClass user = db.get_user(id);
@@ -197,7 +201,9 @@ public class UserProfileFragment extends Fragment {
                         boolean check = update_db.update_user(update_user);
                         if (check){
                             showNotification("Profile Updated");
-                            refreshFragment();
+//                            refreshFragment();
+                            Intent i = new Intent(context,UserHome.class);
+                            startActivity(i);
                         }
                     }else{
                         if (!email_check){
