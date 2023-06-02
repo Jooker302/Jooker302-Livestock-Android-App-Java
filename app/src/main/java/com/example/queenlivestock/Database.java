@@ -61,6 +61,8 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CreateUsersTable);
         sqLiteDatabase.execSQL(CreatePostTable);
 
+        admin_seed(sqLiteDatabase);
+
 
 //        ContentValues cv = new ContentValues();
 //
@@ -77,6 +79,18 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+    }
+
+    private void admin_seed(SQLiteDatabase db) {
+        // Insert initial data into tables
+
+        // Seed the users table
+        ContentValues admin_values = new ContentValues();
+        admin_values.put(NAME, "Admin");
+        admin_values.put(EMAIL, "admin@gmail.com");
+        admin_values.put(ROLE, "admin");
+        admin_values.put(PASSWORD, "admin123");
+        db.insert(USERS, null, admin_values);
     }
 
     public boolean register(UserClass new_user){
@@ -425,6 +439,24 @@ public class Database extends SQLiteOpenHelper {
 
         return posts;
     }
+
+    public boolean delete_post(String postId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = ID + " = ?";
+        String[] selectionArgs = { postId };
+
+        int deletedRows = db.delete(POSTS, selection, selectionArgs);
+        db.close();
+
+        if (deletedRows > 0) {
+            // Post deleted successfully
+            return true;
+        } else {
+            return false;
+            // Failed to delete post or post not found
+        }
+    }
+
 
 
 }
