@@ -51,8 +51,8 @@ public class UserAdapter extends ArrayAdapter<UserClass> {
         nameTextView.setText(user.getName());
         priceTextView.setText(user.getEmail());
 
-        int colorResource = R.color.de_active;
-        Drawable backgroundDrawable = ContextCompat.getDrawable(context, colorResource);
+//        int colorResource = R.color.de_active;
+//        Drawable backgroundDrawable = ContextCompat.getDrawable(context, colorResource);
 
 
 //        if(post.getActive().trim().matches("1")){

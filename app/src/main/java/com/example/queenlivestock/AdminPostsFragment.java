@@ -1,5 +1,6 @@
 package com.example.queenlivestock;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +23,7 @@ public class AdminPostsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private Context context;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -45,7 +50,11 @@ public class AdminPostsFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +68,15 @@ public class AdminPostsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_posts, container, false);
+        View view = inflater.inflate(R.layout.fragment_admin_posts, container, false);
+        ListView allPostsList = view.findViewById(R.id.admin_posts_list);
+        Database db = new Database(context);
+
+        List<PostClass> posts = db.get_all_posts();
+
+        PostAdapter admin_user_adapter = new PostAdapter(context, posts);
+        allPostsList.setAdapter(admin_user_adapter);
+
+        return view;
     }
 }
