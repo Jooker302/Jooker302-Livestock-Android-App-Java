@@ -16,6 +16,9 @@
         android:theme="@style/Theme.QueenLiveStock"
         tools:targetApi="31">
         <activity
+            android:name=".AdminHome"
+            android:exported="false" />
+        <activity
             android:name=".PostDetailActivity"
             android:exported="false" />
         <activity

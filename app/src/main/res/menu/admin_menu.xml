@@ -1,0 +1,27 @@
+<!-- navigation_drawer_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/admin_menu_users"
+            android:title="Users" />
+        <item
+            android:id="@+id/admin_menu_posts"
+            android:title="Posts" />
+        <item
+            android:id="@+id/admin_menu_logout"
+            android:title="Logout" />
+    </group>
+
+<!--    <item android:title="Other Items">-->
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/menu_item1"-->
+<!--                android:title="Item 1" />-->
+<!--            <item-->
+<!--                android:id="@+id/menu_item2"-->
+<!--                android:title="Item 2" />-->
+<!--        </menu>-->
+<!--    </item>-->
+
+</menu>

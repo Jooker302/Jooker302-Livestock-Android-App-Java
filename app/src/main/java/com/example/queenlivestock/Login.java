@@ -84,8 +84,14 @@ public class Login extends AppCompatActivity {
                             editor.putBoolean("isLoggedIn", true);
                             editor.putInt("home_page", Integer.parseInt("1"));
                             editor.apply();
-                            Intent home = new Intent(getApplicationContext(),UserHome.class);
-                            startActivity(home);
+                            if(get_user.getRole().matches("admin")){
+                                Intent home = new Intent(getApplicationContext(), AdminHome.class);
+                                startActivity(home);
+                            }else {
+                                Intent home = new Intent(getApplicationContext(), UserHome.class);
+                                startActivity(home);
+                            }
+
                         }else{
                             login_email.setError("Invalid Email");
                             login_password.setError("Invalid Password");
