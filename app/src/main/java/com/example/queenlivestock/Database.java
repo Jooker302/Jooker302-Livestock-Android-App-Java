@@ -457,6 +457,96 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
+    public List<UserClass> get_all_users() {
+        List<UserClass> users = new ArrayList<>();
 
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {ID, NAME, EMAIL, ADDRESS, PHONE_NO, ROLE, IMAGE, PASSWORD};
+        String selection = ROLE + " != ?";
+        String[] selectionArgs = {"admin"};
+        Cursor cursor = db.query(USERS, columns, selection, selectionArgs, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int idIndex = cursor.getColumnIndex(ID);
+                String id = cursor.getString(idIndex);
+                int nameIndex = cursor.getColumnIndex(NAME);
+                String name = cursor.getString(nameIndex);
+                int emailIndex = cursor.getColumnIndex(EMAIL);
+                String email = cursor.getString(emailIndex);
+                int addressIndex = cursor.getColumnIndex(ADDRESS);
+                String address = cursor.getString(addressIndex);
+                int phoneNoIndex = cursor.getColumnIndex(PHONE_NO);
+                String phoneNo = cursor.getString(phoneNoIndex);
+                int roleIndex = cursor.getColumnIndex(ROLE);
+                String role = cursor.getString(roleIndex);
+                int imageIndex = cursor.getColumnIndex(IMAGE);
+                String image = cursor.getString(imageIndex);
+                int passwordIndex = cursor.getColumnIndex(PASSWORD);
+                String password = cursor.getString(passwordIndex);
+
+                UserClass user = new UserClass(id, name, email, phoneNo, address, image, role, password);
+                users.add(user);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return users;
+    }
+
+    public List<PostClass> get_all_posts_admin() {
+        List<PostClass> posts = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {ID, TITLE, DESCRIPTION, PRICE, IMAGE, USER_ID, ACTIVE};
+//        Cursor cursor = db.query(POSTS, columns, selection, selectionArgs, null, null, null);
+        Cursor cursor = db.query(POSTS, columns, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id_index = cursor.getColumnIndex(ID);
+                String id = cursor.getString(id_index);
+                int title_index = cursor.getColumnIndex(TITLE);
+                String title = cursor.getString(title_index);
+                int description_index = cursor.getColumnIndex(DESCRIPTION);
+                String description = cursor.getString(description_index);
+                int price_index = cursor.getColumnIndex(PRICE);
+                String price = cursor.getString(price_index);
+                int image_index = cursor.getColumnIndex(IMAGE);
+                String image = cursor.getString(image_index);
+                int user_id_index = cursor.getColumnIndex(USER_ID);
+                String userId = cursor.getString(user_id_index);
+                int active_index = cursor.getColumnIndex(ACTIVE);
+                String active = cursor.getString(active_index);
+
+                PostClass post = new PostClass(id, title, description, price, userId, active, image);
+                posts.add(post);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return posts;
+    }
+
+    public boolean delete_user(String userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = ID + " = ?";
+        String[] selectionArgs = { userId };
+
+        int deletedRows = db.delete(USERS, selection, selectionArgs);
+        db.close();
+
+        if (deletedRows > 0) {
+            // Post deleted successfully
+            return true;
+        } else {
+            return false;
+            // Failed to delete post or post not found
+        }
+    }
 
 }
