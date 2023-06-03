@@ -22,6 +22,14 @@
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
+        <FrameLayout
+            android:id="@+id/admin_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp">
+
+        </FrameLayout>
+
         <!-- Rest of your content goes here -->
 
     </RelativeLayout>
