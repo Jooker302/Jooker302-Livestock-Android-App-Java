@@ -51,6 +51,7 @@ public class UserProfileFragment extends Fragment {
     EditText user_p_name;
     EditText user_p_email;
     EditText user_p_password;
+    Button user_profile_logout;
     private static final int PICK_IMAGE_REQUEST_CODE = 1;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     String imageUriString;
@@ -106,6 +107,7 @@ public class UserProfileFragment extends Fragment {
         user_p_name = view.findViewById(R.id.user_p_name);
         user_p_email = view.findViewById(R.id.user_p_email);
         user_p_password = view.findViewById(R.id.user_p_password);
+        user_profile_logout = view.findViewById(R.id.user_profile_logout);
 
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("QueenLiveStockPrefs", Context.MODE_PRIVATE);
@@ -218,6 +220,15 @@ public class UserProfileFragment extends Fragment {
             }
         });
 
+
+        user_profile_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logout =new Intent(context, Login.class);
+                showNotification("Logged Out");
+                startActivity(logout);
+            }
+        });
 
         return view;
     }
