@@ -135,7 +135,7 @@ public class AdminPostsFragment extends Fragment {
         boolean check = db.delete_post(postId);
         if(check){
             showNotification("Deleted Successfully");
-            Intent i = new Intent(context,UserHome.class);
+            Intent i = new Intent(context,AdminHome.class);
             startActivity(i);
         }else{
             showErrorNotification("Error Occurred");
